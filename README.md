@@ -14,3 +14,7 @@ and some analysis and report
 - can use any
 - intelliJ
 - Eclips
+
+## For Assignemnts/labs
+1. Basic operations
+- answer what the operation is and what line
