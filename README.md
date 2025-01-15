@@ -18,3 +18,6 @@ and some analysis and report
 ## For Assignemnts/labs
 1. Basic operations
 - answer what the operation is and what line
+
+## Online websites to solve math equations
+Wolfram Alpha

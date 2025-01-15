@@ -127,3 +127,29 @@ content is always 1
 - this will take more time
 2. increasing n
 - we want the largest n
+
+## Example:
+which line here is the basic operation?
+
+line 1   for i in range (0,20):
+line 2      if i%2==0:
+line 3          count++
+
+
+just my 2 cents:
+you will notice that  each lab question start asking you "what this algo does?" so take that as a starting point when you analyze which line of code  is the basic operation. 
+in your example, step1, the purpose is to find the number of even number. and which line of code determine it ? Its line 2.
+step2,  accourding to week1's slide, think about which line of code operates the most frequently? its still line 2 right.
+Step3, which line of codes has the most complexity of operations? its still line 2 considering its more complex than just counting.  hope it makes sense
+
+
+Answer Line 2 if i%2==0:
+
+
+If-checking (Line 2) will be executed 20 times
+If-block (Line 3) only run 10 times
+You should be able to easily tell between Line 2 and Line 3 which operation is MORE frequent.
+
+So you should choose the more frequent one to be your basic operation.
+
+ 
