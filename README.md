@@ -15,9 +15,19 @@ and some analysis and report
 - intelliJ
 - Eclips
 
+## Quiz topics
+- released topics
+- its after lecture - he opens quiz 
+- multiple choice but you might need to do some calculation so have paper to write on
+
 ## For Assignemnts/labs
 1. Basic operations
 - answer what the operation is and what line
 
 ## Online websites to solve math equations
 Wolfram Alpha
+
+## Assignment 1
+pdf or word
+
+## Assignment 2
