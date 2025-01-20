@@ -1,12 +1,19 @@
 # Class 2
 
 # Example 1
+If we have a if block then a else if - if we need to compare between if and else if then what will run more freqeunetly is the if. There is no condition for checking the if because it has to.
+
 if we have a if then a loop inside then the loop will run more then the if 
+
+if...
+      for...
+The for will run more times since if condition only runs once. For is n times but if is 1.
 
 # Example 2
 - forloop then if inside
 for ....
     if...
+
 
 ## Example 3
 for ...
@@ -14,14 +21,14 @@ for ...
     statement B
     statement C
 
-Statement A B or C but on midterm or exam always go with the first one
+They will ideally run the same times. Statement A B or C but on midterm or exam always go with the first one
 
 ## Example 4
 nested loops
 for ...
       for ....
              statement A
-- choose statement A
+- choose statement A. The inner loop runs more times.
 
 ## Example 5
 Which line to choose for basic operation
@@ -31,7 +38,7 @@ for ...
 for ...
       statement B
 
-- Statement A
+- Statement A. because statement A will run more times.
 
 ## Example 6
 for i <- 1  to 10
@@ -40,44 +47,111 @@ for i <- 1  to 10
 for k <- 1 to n
       statement B
 
-- statement A will always run 1000 times which is lower and smaller than B because statement B is a super big postitive number which will be bigger than 1000 times
+- statement A will always run 1000 times which is lower and smaller than B because statement B is a super big postitive number which will be bigger than 1000 times. Statement B can run n number of times which can be super big.
 
 
-- loop at the most inner loop and if its about n
-- statement A is most inner loop but its not about n
+- look at the most inner loop and if its about n
+- statement A is most inner loop from last example but its not about n
+- but if one level is about n then its one level
 
 - I find the most inner loop then choose next line of the for loop
 
-- when i ask for basic operationa dn which line you must show both
+- when i ask for `basic operation and which line you must show both`
+- We only have one line for the basic operation.
 
+Does the AND operation count towards the basic operation?
+- no the logical and usually not focus on `comparison` and `assignment` 
+- you are on the wrong direction if you are using AND
+- dont choose the line of the loop choose the line after it.
+- when we have two possible solution the way we choose which one is better we are looking for - we are considering the worst case which one is still better
 
-- `Early exit` when you have a if condition to leave the loop thsi is a good thing . When we decide which algo to use we only consider the worst case. The early exist is the best case
+- `Early exit` when you have a if condition to leave the loop this is a good thing. When we decide which algo to use we only consider the worst case. The early exist is the `best case` = early exit
 - Any early exist should be ignored
 
+- we evaluate using the worst case
+
+Ex
+loops(A[0..n-1])
+      for i <- 1 to n-1 do
+            v <- A[i]
+            j <- i-1
+            while j>=0 and A[j]>v do
+                  A[j+1] <- A[j]          // this is the basic operation
+                  j <- j-1
+            A[j+1] <- v
+A[J] is coming from the user and we have no control so we can ignore it because it could be a early exit
+
+The operation is assign value
+
+### Calculation from above equation time 33:26 class 2
+top(n-1) sigma bottom(i<-1) · top(0) sigma bottom(j<-i-1) 1
+top(n-1) sigma bottom(i<-1) · top(i-1) sigma bottom(0) 1 // we can swap the top and bottom. i is the constant, i will be solved later
+
+top(n-1) sigma bottom(i<-1) · (i-1) - 0 + 1 = top(n-1) sigma bottom(i<-1) i
+
+top(n-1) sigma bottom(i<-1) i = ((n-1)(n-1 + 1))/2 = ((n-1)n)/2
+
+This is O(n^2) (we can ignore constant and non significant terms)
+
+### Some options to choose from: ***
+- assignent
+- comparison
+
+## Best and Worst Case
+For some algorithms efficeny depends on form of input
+Worst case: C sub(worst)(n) - maximum over inputs of size n
+Best case: C sub(best)(n) - minimum over inputs of size n
+
+If they fall in teh same worst case? How do we choose but we can chosoe either way but we can also choose the average case then.
 
 ## pg 31 powerpoint
 assign value line 6 A[j+1] <- A[j]
 
 
 ## Example
-
 n(n-1) / 2 
-(n^2)/2 - n/2 -> drop the least sgnificate term dn also the term = n^2
+(n^2)/2 - n/2 -> drop the least significant term and also the term = n^2
 the big O is the n^2
 O(n^2)
 
-the average case can be done by the
+---
+n/2 = O(n)
+
+- if you dont know the average case you can also calculate the average effeciency between best and worst
 (best + worst) / 2
 (n + 1) / 2 = O(n)
 
 - its not great if you get 2^n or n! because it will be too slow. 
 
+## Order of growth
+1 < log sub(2)n < n < nlog sub(2)n < n^2 < n^3 < 2^n < n!
+
+- if your solution doesn't get impacted by how many times something is imputed then it will be O(1) this is just a constant
+
+## Pg 41
+- sometimes you will need to figureout the crosspoint to make sure you choose the input size bigger than it. Or else something lower then it you will have the wrong conclusion. 
+
+- lower time is better for usthe y axis is time
+
 ## WHATS BETTER ** IMPROTANT pg 44 of powerpoint add infrom of log(n)
 Whats better to log(n) is 1
 
-## Chapter 3
-`brute force` - the most straight forward approach
+
+
+
+
+
+# Chapter 3
+`brute force` 
+- the most `straight forward` approach for solving a problem
+- no formal defintion
+- not really trying to be efficent
+- typically these are easy to implement
+- "force" comes from using computer pwoer not intellectual power or "just do it"
+
 - ex if you forgot your 3 digit password you need to guess the numbers from 000 -> 999 until you get it open. So you will check maybe 1000 different numbers
+
+- brute force is not always the most effienct solution
 
 ## Sort
 - we swap using a index
