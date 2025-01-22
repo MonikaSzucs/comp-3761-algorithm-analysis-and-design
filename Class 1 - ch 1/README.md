@@ -38,15 +38,15 @@ CBA
 permuatations for a set n elements n!
 
 ## Subsets
-Given a set of 3 items {a,b,c} how many different subsets can we make?
+Given a set of 3 items {a,b,c} how many different `subsets` can we make?
 subsets are:
 {a,b,c}, {a,b}, {a,c}, {b,c}, {a}, {b}, {c}
 
 ## Summations
-- substitutei in formula for everything in between start and end then add results
+- substitute i in formula for everything in between start and end then add results
 - sum of a constant
 - Changing the start and end
-* We don't always start from ` and end at n
+* We don't always start from 1 and end at n
 
 ### Sum of sums
 - two parts added together
@@ -64,15 +64,15 @@ subsets are:
 - amount of memory
 
 - A well thought out algorithm can run much faster
-- there cnabe a big variation in efficiency
+- there can be a big variation in efficiency
 
 ## Question to ask Tutor
-* Question: How can we make teh recursive approach run in almost the same time?
+* Question: How can we make the recursive approach run in almost the same time?
 
 
 ## How to determine efficiency?
 - can do it experimentally
-- The problem with that pproach is that it is `time consuming` and `expensive` and it is not `accurate`
+- The problem with that approach is that it is `time consuming` and `expensive` and it is not `accurate`
 - want to `estimate` efficency `before` writing code
 
 1. running time of an algorithm depends on the input size - size of `n` in f(n)
@@ -114,7 +114,7 @@ For the computing n! (n factorial) determine:
 ## Example 2 in ppt
 How many times is the basic operation executed for input size n?
 first what is the content? answer is 1
-When you try to put togeter the sigma the content of the sigma (the most inner sigma) the content  is always 1 because by defintion baisc operation sit eh one single statement that will be executed most of the time. Any given solution/algorithm you analyse you shoudl analyze only identify which line it is only 1 line
+When you try to put together the sigma the content of the sigma (the most inner sigma) the content  is always 1 because by defintion baisc operation the one single statement that will be executed most of the time. Any given solution/algorithm you analyse you should analyze only identify which line it is only 1 line
 - always identify 1 line ONLY so the answer is 1
 content is always 1
 

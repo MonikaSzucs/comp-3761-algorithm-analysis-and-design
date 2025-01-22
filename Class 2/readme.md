@@ -153,12 +153,25 @@ Whats better to log(n) is 1
 
 - brute force is not always the most effienct solution
 
+## Brute Force Example
+What is a brute force vs sophisticated solution for the following?
+1. finding a name in a phone book
+2. calculating a fibonnacci number 
+
+## Selection Sort 1:00:00
+1. scan the array to find the smallest element
+2. swap it with the first element (That index is now sorted)
+3. Repeat for the second smallest element
+4. Generally: on pass i, find the smallest element in A[i..n-1] and swap it with A[i]
+
 ## Sort
 - we swap using a index
 
 When you are asked to get 
+Selection sort is  O(n^2)
+- it will then find the fixed position from left to right
 
-## question
+## question find the number in the array
 Write an algo to figure out the minimum value of a given array
 Line 1  findMin(A[1..n])
 Line 2      min <- A[1]             //  min <- 0 is bad
@@ -167,11 +180,10 @@ Line 4          if A[i] < min
 Line 5              min <- A[i]
 Line 6      return min
 
-pay attentionw aht is given to you 
+pay attention what is given to you 
 findMin(A[1..n]) // this means it starts at 1  `IMPORTANT FOR EXAMS`
 
-
-## Question
+## Question find the index
 Algo: findMinIndex (A [1..n])
 Starts at 1
 Line 1  findMin(A[1..n])
@@ -184,27 +196,71 @@ Line 6      return min
 - most inner loop and choose the line below it. this mean we choose line 4 it runs more times
 
 
-## Buble sort
-- the bubble sort makes multiple passes through a list. In each pass of teh list, the algorithm compares adjacent items and exchanges those that are out of order. Each pass through the list places the next largest value in its proper place. In essence, each item bubbles up to the location where it belongs
+## Another Question
+Algo: findMinIndex (A [0..n-2])
+Line 1  for i <-0 to n-2 do
+Line 2      min <- i           
+Line 3      for j <- i+1 to n-1 do
+Line 4          if A[j] < A[min]
+Line 5              min <- j  
+Line 6      swap A[i] and A[min]
+
+upper(n-2) sigma lower(i<- 0) upper(n-1) sigma lower(j<- i+1) 1
+
+upper(n-2) sigma lower(i<-0) n-1 - (i+1) + 1 = upper(n-2) sigma lower(i<-0) n-i-1
+upper(n-2) sigma lower(i<-0) n-i-1 = then apply the forumla end up with n^2
+
+## Bubble sort
+- the bubble sort makes multiple passes through a list. 
+- In each pass of the list, the algorithm compares adjacent items and exchanges those that are out of order. 
+- Each pass through the list places the next largest value in its proper place. 
+- In essence, each item bubbles up to the location where it belongs
 
 - button sort end up in O(n^2)
 - the double for loop is like a brute force
+- it will then find the fixed position from right to left
+
+Algorithm BubbleSort(A[0..n-1])
+line 1      for i<-0 to n-2 do 
+line 2            for j<-0 to n-2-i do
+line 3                  if a[j+1] < A[j]
+line 4                        swap A[j] and A[j+1]
+O(n^2)
+
+- brute force are NOT better efficency
 
 ## String matching
-- finding a word through a paragraph
+- finding a word through a paragraph. Pattern is the specific word we are trying to find
 
-## page 25 of powerpoint lesson 2
+input
+- pattern: A string of m characters to search for
+- text: A longer string of n characters to search in
+
+problem
+- find a substring in the text that matches the pattern
+
+## page 25 of powerpoint lesson 2 String matching finding comparison
 - 3rd comparison a and c dont match is the mismatch
 - next we did 4 comparison
 - next we did 5 comparison
-- next we did 9 comparison TOTAL - this is the final answer *** ON QUIZ/MIDTERM
+- next we did `9` comparison TOTAL - this is the final answer *** ON QUIZ/MIDTERM
 
 ##
 The outer loop shows you the  n-m+1 is the max alignment
-max alignment is
+
+for i<-0 to n-m do
+      j<-0
+      while j < m and P[j] = T[i+j] do
+            j<-j+1
+      if j=m return i
+return -1
+
+max alignment is. for each alignment how much will you end up with?
 (n-m+1) * m
 
-## pg 25
+for each alignment how much will you end up with?
+
+## pg 25  1:40:00
 m = 4  the length of the patern abaa
 n = 13 the length of the text
 the last alignment  does not count the last few values in the n 
@@ -217,6 +273,12 @@ possible align matching is  10
 worst case running time
 O((n-m+1)m)
 
+- there are m comparisons for each shift int eh worst case (inner loop)
+- there are n-m+1 shifts (outer loop)
+- So the worst case runnign tiem is O((n-m+1)m)
+- in the example for previous slide we have (13-4+1)4 comparisons in total
+- n is always bigger than m
+
 ## brute force optimization
 - generate a list of all potential solutions to the problem in a systematic manner
 - evaluate potential solutions one by one, disqualifying infeasible ones, and keeping track of the best one found so far
@@ -224,30 +286,41 @@ O((n-m+1)m)
 
 ## password cracking
 - what is the brute force mechnaism fro figuring out someone's password?
--- quess very posibilitiy
+-- guess very posibilitiy
 - what is the complexity of it?
-m = number of characteres
+m = number of characters to choose from (26 for lowercase alphabet)
+n = character length
+Complexity = m^n 
+password of 7 characters would take 26^7 (8,031,810,176) guesses
 
 
 ## knapsack problem
-- we have a certain backpack that cn carry a certain weight. We can carry some food that weights a certain much and costs a specific amount
+- we have a certain backpack that can carry a certain weight. We can carry some food that weights a certain much and costs a specific amount
 how much can you carry? for best optimization
 
-- capacity of W
+- capacity of W = 16
+item        weight      value
+1           2           $20
+2           5           $30
+3           10          $50
+4           5           $10
 
-- generate all possible subset so of the n items
+- generate all possible `subset` so of the n items
 - compute total weight of each subset
 - identify feasible subsets
-- fidn the subset of the largest value
+- find the subset of the largest value
+{2,2,2,2,2,2,2,2}, {5,5,2,2,2} and so on...
+
+- brute force is the only option for this knapsack proble
 
 2^n (worst one) possible combinated - loop through if they are over the weight limit
 we want to figureout the biggest value
 - we dont have a better solution so we can only use this solution with very low value of n
-big O(2^n)
+big O(2^n) - this is a very slow solution
 
 ## comments on brute force
-- Brute force (exhustive search algorithm) run in a realistic amount of tiem only on very small isntances
-- in many cases, exhustive
+- Brute force (exhustive search algorithm) run in a realistic amount of time only on very small instances
+- in many cases, exhustive search or its variable is the only known way to get exact solution
 
 ## Brute force strengths and weaknesses
 ### Strength
