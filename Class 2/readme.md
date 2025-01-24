@@ -340,4 +340,6 @@ big O(2^n) - this is a very slow solution
 - with sorting it is actually slower
 
 
-
+## Which one is the basic operation
+- you can only choose ONE line
+- choose the next line of the most inner loop
