@@ -136,7 +136,7 @@ answer: n^2
 log(45) + 2
 answer: 1
 
-# Divide and Conquer (Chpater 5)
+# Divide and Conquer (Chapter 5)
 ## This week
 - divide and conquer technique
 - count a specific key in an array
@@ -310,3 +310,29 @@ n/b = n/2 -> b = 2
 F(n) = n^2
 n^logb(a) = n^log2(4) = n^2
 T(n) = O(n^2 * log n)
+
+## Pseudocode of merge sort
+Algorithm MergeSort(A[0..n-1])
+// Sort Array: A[0..n-1] by recursive mergesort
+// Input: An array A[0..n-1] of orderable elements
+// Output: Array A[0..n-1] sorted in nondecreasing order
+if n > 1
+    copy A[0..floor(n/2)-1] to B[0..floor(n/2)-1]
+    copy A[floor(n/2)..n-1] to C[0..floor(n/2)-1]
+    MergeSort(B[0..floor(n/2)-1])
+    MergeSort(C[0..floor(n/2)-1])
+    Merge(B,C,A)
+
+## Merging
+Implementation of Merge(B,C,A)
+- important two sorted arrays (B and C) and merge it into an empty array (A)
+
+- Example
+B = {3 8 9} C = {1 5 7}
+merge(B,C,A) = A = {1,3,5,7,8,9}
+
+- must put the next smallest element into the merged list at each point
+- each next-smallest could come from either list
+
+## Pseudocode of Mrege
+start at 2:09:30
