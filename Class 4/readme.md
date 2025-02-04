@@ -68,12 +68,12 @@ n*(n-1)
 n^2 - n
 
 ## Question 7
-Consider teh algorithm below. What is the output if the input is A[0,1,4,-1,2]?
+Consider the algorithm below. What is the output if the input is A[0,1,4,-1,2]?
 
 Algorithm Secret(A[0..n-1])
 // Input: An array A[0..n-1] of real numbers
 minval = A[0]
-maxcal = A[0]
+maxval = A[0]
 for i = 1 to n-1 do
     if A[i] < minval then
         minval = A[i]
@@ -92,7 +92,7 @@ Consider teh algorithm below. What is the output if the input is A[-2,-1,0,1,2]?
 Algorithm Secret(A[0..n-1])
 // Input: An array A[0..n-1] of real numbers
 minval = A[0]
-maxcal = A[0]
+maxval = A[0]
 for i = 1 to n-1 do
     if A[i] < minval then
         minval = A[i]
@@ -147,13 +147,13 @@ answer: 1
 A well known algorithm design technique
 
 1. `Divide` instance of problem into two or more smaller instances
-2. `Solve` smaller isntances (usually recursively)
+2. `Solve` smaller instances (usually recursively)
 3. Obtain solution to orginal (larger) instance by `combining` these solutions
 
 - easier to go recursive way
 
 ## A Natural Question
-- how is this different from decrease adn conquer technique?
+- how is this different from decrease and conquer technique?
 - think of the fake coin problem:
 -- we discarded half the coins at each step
 -- so we didn't do any work on those "sub problems"
@@ -165,9 +165,9 @@ A well known algorithm design technique
 Algo: findMinValue(A[1..n], s, e)
 if s = e then
     return A[s]
-mid = floor((s + e) / 2)
-lmin = findMinValue(A[], s, mid)
-rmin = findMinValue(A[], mid+1, e)
+mid <- floor((s + e) / 2)
+lmin <- findMinValue(A[], s, mid)
+rmin <- findMinValue(A[], mid+1, e)
 if lmin < rmin
     return lmin
 return rmin
@@ -186,7 +186,7 @@ Problem
 - count the number of times a specific key appears in an array
 For example
 - if input array is A=[2,7,6,6,2,4,6,9,2] and key=6..
-shoudl return the value 3
+should return the value 3
 
 Design an algorithm using divide and conquer technique
 
@@ -214,7 +214,7 @@ CountKey looks familiar..
 -- in binary search, one half gets ignored if out of bounds
 -- in CountKey, both sides are searched to get sum
 
-## Analysis of dvides and conquer algorithms
+## Analysis of dvide and conquer algorithms
 T(n) = aT(n/b) + F(n)
 
 b is about sub problem size
@@ -334,5 +334,5 @@ merge(B,C,A) = A = {1,3,5,7,8,9}
 - must put the next smallest element into the merged list at each point
 - each next-smallest could come from either list
 
-## Pseudocode of Mrege
+## Pseudocode of Merge
 start at 2:09:30

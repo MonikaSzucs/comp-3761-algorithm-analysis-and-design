@@ -1,9 +1,11 @@
 package DecreaseAndConquer;
 // {0,1,2,3,4,5,6}
-// {1,2,3}{4,5,6}
+// {1,2,3} {4,5,6}
+
+// big O is O(log n)
 public class FindIndex {
     public static boolean doesIndexExist(int []array) {
-        return getIndexRecursive(array, 0, array.length-1) >=0;
+        return getIndexRecursive(array, 0, array.length-1) >= 0;
     }
 
     private static int getIndexRecursive(int[]array, int startIndex, int lastIndex) {

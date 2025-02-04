@@ -19,8 +19,8 @@ public class MergeSort {
     }
     //O(logn)*O(n)= O(nlogn)
     // this recursive function is only going over all sizes/2
-    private static void getSortedArrayRecursive(int[] array, int startIndex, int lastIndex){
-        if(startIndex >= lastIndex){
+    private static void getSortedArrayRecursive(int[] array, int startIndex, int lastIndex) {
+        if(startIndex >= lastIndex) {
             return;
         }
         int middleIndex = (startIndex+lastIndex)/2;
@@ -30,7 +30,7 @@ public class MergeSort {
         merge(array,startIndex, middleIndex, lastIndex);
     }
     // O(n)
-    private static void merge(int[] array, int firstHalfStart, int firstHalfLast, int secondHalfLast){
+    private static void merge(int[] array, int firstHalfStart, int firstHalfLast, int secondHalfLast) {
         int firstHalfIndex = firstHalfStart;
         int secondHalfIndex = firstHalfLast + 1;
         // firstHalfStart = 4 firstHalfLast=6 secondHalfLast=8
