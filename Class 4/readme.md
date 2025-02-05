@@ -111,7 +111,7 @@ Consider teh algorithm below. What is the output if the input is A[2,1,4,1,2]?
 Algorithm Secret(A[0..n-1])
 // Input: An array A[0..n-1] of real numbers
 minval = A[0]
-maxcal = A[0]
+maxval = A[0]
 for i = 1 to n-1 do
     if A[i] < minval then
         minval = A[i]
@@ -335,4 +335,39 @@ merge(B,C,A) = A = {1,3,5,7,8,9}
 - each next-smallest could come from either list
 
 ## Pseudocode of Merge
-start at 2:09:30
+Algorithm Merge(B[0..p-1], C[0..q-1], A[0..p+q-1])
+// Merges two sorted arrays into one sorted array
+// Input: Arrays B[0..p-1] and C[0..q-1] both sorted
+// output: Sorted arrays A[0..p+q-1] of the elements of B and C
+i <- 0; j <- 0; k <- 0
+while i < p or j < q do
+    if B[i] <= C[j]
+        A[k] <- B[i]; i <- i + 1
+    else A[k] <- C[j]; j <- j + 1
+    k <- k + 1
+if i = p  // this is used to copy over the remainder in one or the other arrays
+    copy C[j..q-1] to A[k..p+q-1]
+else copy B[i..p-1] to A[k..p+q-1]
+
+Can this eb optimized? (hint i or j maxes out?)
+- merge function is a helper function
+- it will loop through condition
+
+basic operation?
+if B[i] <= C[j] line 4 comparison
+the number of items in B and C could be unlimited numbers we call O(n)
+
+What is the a, b and f(n)
+F(n) = n  - there is a loop so its not just 1 for the answer 
+a = 2  
+- 2 sub problems
+b = 2 
+- 2 different sections of the problem since we are talking about half
+
+n^(logb(a)) = n^(log2(2)) = n^1 = n
+
+n == n so 
+O(nlogn)
+
+
+

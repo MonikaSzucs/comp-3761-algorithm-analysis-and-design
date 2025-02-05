@@ -9,6 +9,7 @@ and some analysis and report
 
 ## Online Class
 - midterm and exam is online
+- its all pseudocode
 
 ## IDE
 - can use any
