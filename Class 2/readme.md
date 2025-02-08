@@ -285,7 +285,7 @@ O((n-m+1)m)
 - when search ends, announce the solution(s) found
 
 ## password cracking
-- what is the brute force mechnaism fro figuring out someone's password?
+- what is the brute force mechnaism for figuring out someone's password?
 -- guess very posibilitiy
 - what is the complexity of it?
 m = number of characters to choose from (26 for lowercase alphabet)

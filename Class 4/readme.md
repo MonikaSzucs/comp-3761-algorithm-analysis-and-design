@@ -87,7 +87,7 @@ Answer:
 4 - (-1) = 5
 
 ## Question 8
-Consider teh algorithm below. What is the output if the input is A[-2,-1,0,1,2]?
+Consider the algorithm below. What is the output if the input is A[-2,-1,0,1,2]?
 
 Algorithm Secret(A[0..n-1])
 // Input: An array A[0..n-1] of real numbers
