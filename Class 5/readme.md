@@ -15,22 +15,16 @@ Divide and conquer
 - divide and conquer cannot usually be written in a loop
 
 `Sequencial search (linear search)`
-
-consider both demention (n - how many words in wordlist.txt  | m - how many words to check)
-O(m*n)
-Only consider (n - how many words in wordlist.txt | 1 - discuss one word to check)
-O(n)
-
 vs
-
 `binary search`
-- we can run and lauch this because it is already sorted. 
-consider both demention (n - how many words in wordlist.txt  | m - how many words to check)
-O(m*log n)
-Only consider (n - how many words in wordlist.txt | 1 - discuss one word to check)
-O(log n)
 
-## Transform and conquer (Chapter 6)
+|                                   |   consider both demention (n - how many words in wordlist.txt  / m - how many words to check)   | Only consider (n - how many words in wordlist.txt / 1 - discuss one word to check) |
+| --------------------------------- |:-----:| -------:|
+| Sequencial search (linear search) |   O(m*n)   |    O(n)    |
+| binary search                     |   O(m*log n)   |    O(log n)    |
+|                      |   acceptable   |   Acceptable     |
+
+# Transform and conquer (Chapter 6)
 This technique solves a problem by transformation to
 1. `instance simplification`
 - a more convient instance of the same problem
