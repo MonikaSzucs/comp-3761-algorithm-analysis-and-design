@@ -318,7 +318,7 @@ Step 2: Repeat step 1 for the preceding parental node
 ## Example of Heap Construction
 - Construct a heap for the list 2,9,7,6,5,8
 Step 0: initialize the structure with keys in the order given
-Step 1: starting with the last(rightmost) parental node, fix teh heap rooted at it, if it doesn't satisfy the heap condition: keep exchanging it with its largest child until the heap condition holds
+Step 1: starting with the last(rightmost) parental node, fix the heap rooted at it, if it doesn't satisfy the heap condition: keep exchanging it with its largest child until the heap condition holds
 
 Construct a heap for the list 2,9,7,6,5,8
 
@@ -327,6 +327,30 @@ How can we use a Heap sort to sort an arbitrary array?
 1. transform the array into a heap (construct a heap)
 2. call RemoveMax to get all array elements in sorted order
 
+## Example of sorting by Heapsort
+Sort the list 2,9,7,6,5,8 by heapsort
+
+Stage 1 (heap construction)
+2 9 `7` 6 5 8
+2 `9` 8 6 5 7
+`2` 9 8 6 5 7
+9 `2` 8 6 5 7
+9 6 8 2 5 7
+
+Stage 2 (remove max)
+9 6 8 2 5 7
+7 6 8 2 5
+8 6 7 2 5
+5 6 7 2
+7 6 5 2
+2 6 5
+6 2 5
+5 2
+5 2
+
+1. exchange root with rightmost leaf
+2. delete element
+3. bubble root down until its heap ordered
 
 ## Analysis of Heapsort
 Stage 1: build heap for a given list of n keys 
