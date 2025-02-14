@@ -99,7 +99,7 @@ mode = 6
 - if there is more than one that is the most frequent so the same number of times either one you choose is fine.
 
 - this means you will need two loops
-- when youahve two loops both are about n it matters how big the number is. If it is a fixed number then it doesn't count. This means Big O will be 1000n but is bigO(n) since we drop the 1000 constant
+- when you have two loops both are about n it matters how big the number is. If it is a fixed number then it doesn't count. This means Big O will be 1000n but is bigO(n) since we drop the 1000 constant
 
 ## Midterm
 - he will give two loops and you have to tell him if its a big O(n^2) and why
@@ -107,7 +107,7 @@ mode = 6
 
 ### How do you solve this using brute force?
 - we will use different counters
-- think of an array - there is a slort for corresponding index 
+- think of an array - there is a slot for corresponding index 
 - index will help find corresponding value
 - big O for this would be O(n^2)
 - you need tow loops for each element in array you need to scan over element in array to count how many accurance of it.
@@ -126,6 +126,11 @@ Efficiency (worst case):
 - creating count list: 0 + 1 + 2 + ... + n - 1 = O(n^2)
 - finding max: O(n)
 Effiency of worst case: O(n^2)
+
+EFficency:
+T(n) = Tsort(n) + Tsearch(n) = ?
+(nlogn) + (n) = ?
+nlogn
 
 ## Midterm
 - solve a problem with more than one solution
@@ -163,7 +168,7 @@ ALGO PresortMode(A[0..n-1])
 Problem: search for a given K in A[0..n-1]
 
 Presorting-based algorithm
-- stage 1: sort the array by an efficent sorting algorithm
+- stage 1: sort the array by an efficent sorting algorithm (nlogn)
 - stage 2: Apply binary search
 
 Efficeny: O(nlogn) + O(logn) = O(nlogn)
@@ -306,7 +311,7 @@ draw the tree representation of this heap
 - bubble root down until it's heap ordered
 - if you need to remove a mode you remove the right most leaf 
 
-- need to compare with the larger childen bubbling down 1:55:00
+- need to `compare with the larger childen bubbling down` 1:55:00
 
 ## Heap Construction
 Step 0: Initialize the structure with keys in the order given

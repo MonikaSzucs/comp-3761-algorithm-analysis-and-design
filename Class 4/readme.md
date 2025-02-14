@@ -266,7 +266,7 @@ b = 2
 - how many times you hit the return you only hit one ot the other so its 1
 n/b = n/2  -> b = 2
 
-- in decrease and conquer F(n) is always equal to 1
+- `in decrease and conquer F(n) is always equal to 1`
 
 n^logb(a) = n^log2(1) = n^0 = 1
 F(n) = 1
@@ -349,7 +349,7 @@ if i = p  // this is used to copy over the remainder in one or the other arrays
     copy C[j..q-1] to A[k..p+q-1]
 else copy B[i..p-1] to A[k..p+q-1]
 
-Can this eb optimized? (hint i or j maxes out?)
+Can this be optimized? (hint i or j maxes out?)
 - merge function is a helper function
 - it will loop through condition
 
