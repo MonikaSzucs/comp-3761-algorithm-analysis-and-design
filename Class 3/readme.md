@@ -33,7 +33,7 @@ Can be implements:
 - top-down (Recursive)
 - bottom-up (iterative)
 
-## Top-down
+## Top-down pg 5
 n
 n-1
 n-2
@@ -59,7 +59,7 @@ Factorial(5) = ?
 
 - for any decrease and conquer solution, you could either write it out as a iterative way or a recursive way
 
-## Bottom up (Iterative)
+## Bottom up (Iterative) pg 6
 Factorial(n)
     F <- 1
     for i<-1 to i <-n
@@ -95,7 +95,8 @@ to
 then bring step 1 and 3 together to the: 
 4. solution to the original problem
 
-### Example Decrease by one (insertion sort)
+### Example Decrease by one (insertion sort) pg 10
+```
 Loops(A[0..n-1])
     for i <- 1 to n-1 do
         v <- A[i]
@@ -104,7 +105,7 @@ Loops(A[0..n-1])
             A[j+1] <- A[j]
             j <- j-1
         A[j+1] <- v
-
+```
 n
 n-1
 n-2

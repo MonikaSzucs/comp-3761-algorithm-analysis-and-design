@@ -66,8 +66,8 @@ Does the AND operation count towards the basic operation?
 - when we have two possible solution the way we choose which one is better we are looking for - we are considering the worst case which one is still better
 
 - `Early exit` when you have a if condition to leave the loop this is a good thing. When we decide which algo to use we only consider the worst case. The early exist is the `best case` = early exit
-- Any early exist should be ignored
-
+- `Any early exist should be ignored
+`
 - we evaluate using the worst case
 
 Ex
@@ -82,6 +82,138 @@ loops(A[0..n-1])
 A[J] is coming from the user and we have no control so we can ignore it because it could be a early exit
 
 The operation is assign value
+
+# Class 2
+
+## What did we learn last lesson?
+1. Efficiency of an algorithm depends on input size 
+2. Efficiency of an algorithm also depends on  basic operation
+3. Efficiency can be expressed by counting the basic operation
+
+## Notes
+
+| Class |     Name    | Comments |
+| :---  |     :---:   |    ---: |
+|   1   | constant    |  Short of best-case efficiencies, very few reasonable examples can be given since an algorithm's running time typtically goes to infinity when its input size grows infinitely large. |
+| logn  | logarithmic | Typically, a result of cutting a problem's size by a constant factor on each iteration of the algorithm (see Section 5.5). Note that a logarithmic algoithm cannot atke into account all its input (or even a fixed fraction of it): any algorithm that does so will ahve at least linear running time.  |
+| n  | linear | Algorithms that scan a list of size n (ex sqeuencial search) belong to this class  |
+| nlogn  | n-log-n | Many divide and conquer algorithms include merge sort and quicksort in the average case, fall into this category  |
+| n^2  | quadratic | Typically, characterizes efficency of algorithms iwth two embedded loops (see the next section). Elementary sorting algorithms and certain operations on n-by-n matrices are standard example  |
+| n^3  | cubic | Typically, characterizes efficency of algorithms with three mbedded loops (see the next section). Several non tricial algorithms from linear algebra fall into this class |
+| 2^n  | exponential | Typtical for algorithms that generate all subsets of an n-element set. Often the term exponential is used in a broader sense to include this and larger orders of growth as well |
+| n!  | factorial | Typtical for algorithms that generate all permutations of an n-element set |
+
+## General Strategy for Analysis of Non-recursive Algorithms
+1. Decide on a parameter indicating the inputs size.
+2. Identify the algorithms basic operation.
+3. Check whether the number of times the basic operation is executed depends only on the size of the input.
+•if it depends on some other property, the best/worst/average case efficiencies must be investigated separately
+4. Set up a sum expressing the number of times the basic operation is executed.
+5. Use standard formulas and rules of sum manipulation to find a closed form formula c(n) for the sum from step 4 above.
+6. Determine the efficiency class of the algorithm using asymptotic notations 
+
+## Example 1
+Problem: find the max element in a list
+- Input size measure:
+-- Number of list’s items,  i.e. n
+- Basic operation: 
+-- Comparison
+
+C(n) = top(n-1) sigma bottom(i=1)1 = n-1 which is O(n)
+```
+Algo MaxElement(A[0..n-1])
+      maxval <- A[0]
+      for i <- 1 to n-1 do
+            if A[i] > maxval
+                  maxval <- A[i]
+      return maxval
+```
+## Example 2
+Problem: Multiplication of two matrices
+- Input size measure: 
+- Basic operation: 
+
+```
+ALGO MatrixMultiplication(A[0..n-1, 0..n-1], B[0..n-1, 0..n-1])
+      for i <- 0 to n-1 do
+            for <- 0 to n-1 do
+                  C[i,j] <- 0.0
+                  for k <- 0 to n-1 do
+                        C[i,j] <- C[i,j] + A[i,k] * B[k,j]
+
+      return C
+```
+C(n) = top(n-1) sigma bottom(i=0) top(n-1) sigma bottom(j=0) top(n-1) sigma bottom(k=0) 1 = n^3 which is O(n^3)
+
+
+## Brute Force
+### Brute Force Technique
+- No formal definition
+- The “obvious and straightforward” approach for solving a  problem
+- Not really trying to be efficient
+- Typically these are easy to implement
+- “Force” comes from using computer power not intellectual power or “Just do it!”
+
+### Brute Force Example
+What is a brute force vs sophisticated solution for the following?
+1. Finding a name in a phone book
+2. Calculating a Fibonacci  number 
+
+## Brute Force Overview
+1. Sorting problem
+- Selection sort
+- Bubble sort
+2. String matching
+3. Optimization problem
+- Knapsack problem
+
+## Sorting problem
+### Selection Sort
+1. Scan the array to find the smallest element.
+2. Swap it with the first element. (That index is now sorted)
+3. Repeat for the second smallest element.
+4. Generally: on pass i, find the smallest element in A[i..n-1] and swap it with A[i].
+
+`Pseudocode`
+```
+ALGO SelectionSort(A[0..n-1]) 
+      // sorts a given array by selection sort
+      // Input: An array A[0..n-1] of orderable elements
+      // output: Array A[0..n-1] sorted in nondecreasing order
+      for i <- 0 to n-2 do
+            min <- i
+            for j <- i+1 to n-1 do
+                  if A[j] < A[min]
+                        min <- j
+                  swap A[i] and A[min]
+```
+
+Efficency? O(n^2)
+
+### Bubble Sort
+- The `bubble sort` makes multiple passes through a  list.  In each pass of the list, the algorithm compares  adjacent items and exchanges those that are out of  order. Each pass through the list places the next  largest value in its proper place. In essence, each item  “bubbles” up to the location where it belongs
+
+```
+ALGO BubbleSort(A[0..n-1])
+      // Sorts a given array by bubble sort
+      // Input: An array A[0..n-1] of orderable elements
+      // Output Array A[0..n-1] sorted in ondecreasing order
+      for i<-0  to n-2 do
+            for j<-0 to n-2-i do
+                  if A[j+1] < A[j]
+                        swap A[j] and A[j+1]
+```
+
+C(n) = top(n-2) sigma bottom(i=0) top(n-2-i) sigma bottom(j=0) 1
+
+EFficency? O(n^2)
+
+What is it’s performance based on input size?
+- What input would be the best case?
+- What input would be the worst case?
+- https://www.toptal.com/developers/sorting-algorithms/bubble-sort 
+
+
 
 ### Calculation from above equation time 33:26 class 2
 top(n-1) sigma bottom(i<-1) · top(0) sigma bottom(j<-i-1) 1
@@ -102,7 +234,45 @@ For some algorithms efficeny depends on form of input
 Worst case: C sub(worst)(n) - maximum over inputs of size n
 Best case: C sub(best)(n) - minimum over inputs of size n
 
-If they fall in teh same worst case? How do we choose but we can chosoe either way but we can also choose the average case then.
+If they fall in the same worst case? How do we choose but we can chosoe either way but we can also choose the average case then.
+
+## String Matching
+Pattern: `Compress`
+Text: We introduced a general framework which is suitable to capture an essence of `compress`ed pattern matching
+
+Input:
+- pattern: A string of m characters to search for
+- text: A longer string of n characters to search in
+
+Problem:
+- Find a substring in the text that matches the pattern
+
+`Brute-force algorithm`
+1.  Align pattern at beginning of text
+2.  Moving from left to right, compare each character of pattern to the corresponding character in text until
+- all characters are found to match (successful search); or
+- a mismatch is detected
+3.  While pattern is not found and the text is not yet exhausted, realign pattern one position to the right and repeat Step 2
+
+`Pseudocode` pg 27
+```
+ALGO BruteForceStringMatching(T[0..n-1],P[0..m-1])
+      // Implements brute-force string matching
+      // Input: An array T[0..n-1] of n characters representing a text and an array P[0..n-1] of m characters representing a pattern
+      // Output: The index of the first character in the text that starts a matching substring or -1 if the search is unsuccessful
+      for i<-0 to n-m do
+            j <- 0
+            while j < m and P[j] = T[i+j] do
+                  j <- j + 1
+            if j=m return i
+      return -1
+```
+
+### Worst-case Analysis
+- There are m comparisons for each shift in the worst case (inner loop)
+- There are n-m+1 shifts (outer loop)
+- So, the worst-case running time is: `O((n-m+1)m)`
+- In the example on previous slide, we have (13-4+1)4 comparisons in total
 
 ## pg 31 powerpoint
 assign value line 6 A[j+1] <- A[j]
@@ -128,13 +298,84 @@ n/2 = O(n)
 
 - if your solution doesn't get impacted by how many times something is imputed then it will be O(1) this is just a constant
 
+## Brute Force for optimization problems
+- Generate a list of all potential solutions to the problem in a  systematic manner
+- Evaluate potential solutions one by one, disqualifying infeasible  ones, and keeping track of the best one found so far
+- When search ends, announce the solution(s) found
+
+### Password Cracking
+What is the brute force mechanism for figuring out someone's password?
+- Guess every possibility
+
+What is the complexity of  it?
+- m = number of characters to choose from (26 for lowercase alphabet)
+- n = character length
+- Complexity = mn 
+- Password of 7 characters would take 267(8,031,810,176) guesses
+
+### Knapsack Problem
+Input:
+- weights:    w1   w2 ...  wn
+- values:       v1    v2  ...  vn
+- a knapsack of capacity W 
+
+Goal:
+- Find most valuable subset of the items that fit into the knapsack
+
+Example:  Knapsack capacity W=16
+```
+item    weight         value
+1          2              $20
+2          5              $30
+3         10              $50
+4          5              $10
+```
+- Generate all possible subsets of the n items
+- Compute total weight of each subset 
+- Identify feasible subsets
+- Find the subset of the largest value
+
+```
+{1}         2     $20
+{2}         5     $30
+{3}         10    $50
+{4}         5     $10
+{1,2}       7     $50
+{1,3}       12    $70
+.
+.
+.
+{1,2,3,4}   22    not feasible
+```
+
+Need to generate all subsets.  For n  items, there are 2n subsets.  So this is a O(2n) algorithm
+
+
+- Brute force (Exhaustive-search algorithms) run in a  realistic amount of time only on very small instances 
+- In many cases, exhaustive search or its variation is the only known way to get exact solution
+
+## B.F. Strengths and Weaknesses
+Strengths
+- wide applicability
+- simplicity
+- yields reasonable algorithms for some important problems
+-- matrix mult.
+-- sorting
+-- searching
+-- string matching
+
+Weaknesses
+- rarely yields efficient algorithms
+- some brute-force algorithms are unacceptably slow
+- not as constructive as some other design techniques
+
 ## Pg 41
 - sometimes you will need to figureout the crosspoint to make sure you choose the input size bigger than it. Or else something lower then it you will have the wrong conclusion. 
 
-- lower time is better for usthe y axis is time
+- lower time is better for us the y axis is time
 
-## WHATS BETTER ** IMPROTANT pg 44 of powerpoint add infrom of log(n)
-Whats better to log(n) is 1
+## WHATS BETTER ** IMPROTANT pg 44 of powerpoint add infront of log(n)
+Whats better than log(n) is 1
 
 
 
