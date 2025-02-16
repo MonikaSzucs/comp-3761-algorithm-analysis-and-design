@@ -162,6 +162,7 @@ A well known algorithm design technique
 -- you need to solve all of the sub problems
 
 ## Exercise Divide and Conquer
+```
 Algo: findMinValue(A[1..n], s, e)
 if s = e then
     return A[s]
@@ -171,6 +172,7 @@ rmin <- findMinValue(A[], mid+1, e)
 if lmin < rmin
     return lmin
 return rmin
+```
 
 ## A Natural Question
 - how is this different from decrease and conquer technique
@@ -191,6 +193,7 @@ should return the value 3
 Design an algorithm using divide and conquer technique
 
 ## Solution Question 5-1
+```
 Algorithm CountKey(A[], L, R, Key)
 // Input: A[] is an array A[0..n-1] from indices L and R (L <= R)
 // Output: A count of the number of time Key exists in A[L..R]
@@ -201,6 +204,7 @@ Algorithm CountKey(A[], L, R, Key)
 5.      lCount <- CountKey(A[], L, Floor((L+R)/2), Key)
 6.      rCount <- CountKey(A[], floor((L+R)/2)+1, R, Key)
 7.      return lCount + rCount
+```
 
 The adding part is bigO(1)
 a = 2
@@ -247,6 +251,7 @@ F(n) = 1
 conclusion: T(n) = O(n)
 
 ## Example
+```
 binarySearch(a[],k,start,end)
     if end < start
         return not found
@@ -257,6 +262,7 @@ binarySearch(a[],k,start,end)
         return binarySearch(a[],k,middle+1,end)
     else if k < a[middle]
         return binarySearch(a[],k,start,middle-1)
+```
 
 - with recursive operation we cannot work it out with basic operations because we dont see a loop
 - we need sub problem - how many times you call yourself
@@ -311,7 +317,8 @@ F(n) = n^2
 n^logb(a) = n^log2(4) = n^2
 T(n) = O(n^2 * log n)
 
-## Pseudocode of merge sort
+## Pseudocode of merge sort pg 21
+```
 Algorithm MergeSort(A[0..n-1])
 // Sort Array: A[0..n-1] by recursive mergesort
 // Input: An array A[0..n-1] of orderable elements
@@ -322,6 +329,7 @@ if n > 1
     MergeSort(B[0..floor(n/2)-1])
     MergeSort(C[0..floor(n/2)-1])
     Merge(B,C,A)
+```
 
 ## Merging
 Implementation of Merge(B,C,A)
@@ -334,7 +342,8 @@ merge(B,C,A) = A = {1,3,5,7,8,9}
 - must put the next smallest element into the merged list at each point
 - each next-smallest could come from either list
 
-## Pseudocode of Merge
+## Pseudocode of Merge pg 33
+```
 Algorithm Merge(B[0..p-1], C[0..q-1], A[0..p+q-1])
 // Merges two sorted arrays into one sorted array
 // Input: Arrays B[0..p-1] and C[0..q-1] both sorted
@@ -348,6 +357,7 @@ while i < p or j < q do
 if i = p  // this is used to copy over the remainder in one or the other arrays
     copy C[j..q-1] to A[k..p+q-1]
 else copy B[i..p-1] to A[k..p+q-1]
+```
 
 Can this be optimized? (hint i or j maxes out?)
 - merge function is a helper function

@@ -77,6 +77,9 @@ Sort a known range of  numbers
 Source 4 1 3 4 3    Return  1 3 3 4
                             1’s 3’s 4’s
 ```
+
+pg 28
+
 ```
 Algo DistributionCountingSort (A[0.. n-1])
     for j <- 0 to u-l do
@@ -331,12 +334,12 @@ Value in table =
 - pattern’s length m, if  last character in pattern
 
 Example: assume our pattern is IDIGDAB  (m=7)
-Value in table = 
+`Value in table` = 
 - distance from c’s rightmost occurrence in pattern (m – index in pattern – 1)
 - pattern’s length m, if  last character in pattern
 
 ### Extra example
-TEAM
+TEAM // last letter is M so it will be given a position of 3
 
 A   E   M   T   *
 1   2   4   3   4
@@ -345,7 +348,7 @@ A   E   M   T   *
 total (t) = 4
 A = 4-2-1 = 1
 E = 4-1-1 = 2
-M = 4-3-1 = 4
+M = 4-3-1 = 4 // is the last character in the pattern
 T = 4-0-1 = 3
 
 ### Using the shift table ...
@@ -426,23 +429,26 @@ O(logn)+O(n)+O(1) = O(n)
 -- Hashing
 
 ## Hashing
-- Each item has a unique key.
-- Use a large array called a Hash Table.
-- Use a Hash Function that maps keys to a index in the Hash Table
+- Each item has a `unique key`.
+- Use a large array called a `Hash Table`.
+- Use a `Hash Function` that maps keys to a index in the Hash Table
 
 f(key) = index
 
 ## Hash Functions
 Common hash function for `numerical keys`
 
-Example
+`Example`
 assume m=5
 Insert into hash table (10, Bob)
+
+10 -> key mod 5 -> 0
+10/5 = 2 Remainder 0 this means it will map to index 0
 
 What do we do if  our key is not a number?
 • `answer`: map it to a number!
 
-Example
+`Example`
 assume m=5
 Insert into hash table (Emily, 6046321)
 
@@ -451,6 +457,10 @@ Example
     Insert into hash table (Emily, 6046321)
         ord(e) +ord(m) + ord(i) + ord(l)+ ord(y)=
         5+ 13+ 9 + 12+ 25 = 64
+
+64 -> key mode 5 -> 4
+
+64 % 5 = 12 remainder 4
 
 - Sample Hash function for the keys that are not number
 
@@ -486,6 +496,13 @@ index  = 30 mod 25 = 5
 2. Insert into hash table (105, Anthony )
 index = 105 mod 25 = 5
 
+0
+1
+2
+3
+4
+pos 5 -> 30 Jimmy -> 105 Anthony
+
 #### Separate Chaining Exercise 1
 - Use the hash function h(i) = i mod 7
 - Draw the Separate chaining hash table resulting from inserting following keys and values:
@@ -495,6 +512,14 @@ index = 105 mod 25 = 5
 (16, name4)
 ( 5,  name5)
 (28, name6)
+
+0 -> 25 name 6
+1
+2 -> 44 name1 -> 23 name3 -> 6 name4
+3
+4
+5 -> 12 name2 -> 5 name5
+6
 
 ### Closed Hashing
 It works like this:
@@ -522,9 +547,9 @@ index = 105 mod 25 = 5
 
 ### Efficiency of  Hashing
 What is the efficiency of  the hashtable structure?
-- add(key, value)        ... is  𝑶(𝟏)  
+- add(key, value)      ... is  𝑶(𝟏)  
 - value   get(key)    ... is  𝑶(𝟏)
-- delete(key)               ... is 𝑶(𝟏)
+- delete(key)          ... is 𝑶(𝟏)
 - of  course there could always be a degenerate case, where every insert causes a collision ... in this case we would end up with O(n)
 
 - conclusion : implementation of  the hashing function is important
@@ -558,11 +583,14 @@ code <- h mod numBuckets
 
 #### Better String Hash Function
 a better hashcode algorithm for strings
+
+```
 alpha  <- |alphabet| // size of the alphabet used 
 h <- 0
 for i <- 0 to s-1 do
     h <- h + (ascii(ci) * alpha^(i))
 code <- h mod numBuckets
+```
 
 - Assuming alpha = 128 (number of  ascii codes)
 - Assuming numbuckets = 99

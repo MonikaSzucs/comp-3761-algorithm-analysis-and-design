@@ -53,10 +53,12 @@ Brute force algorthm
 -- all elements are unique
 - you will be given a list of arrays they are all unique. 
 
+```
 Algo UniqueVal(a[0..n-1]) 
   for i <- 0 to n-1 do
     for j <- i + 1 to n-1 do
       if a[i] = a[j]
+```
 
 - we want to check if there are duplicates
 
@@ -76,7 +78,8 @@ big O(n^2)
 
 nlog(n) this is better
 
-## Element uniqueness in an array
+## Element uniqueness in an array pg 5
+```
 ALGO PresortElementUniqueness(A[0..n-1])
   // solves the element unqiueness problem by sorting the array first
   // input: an array A[0..n-1] of orderable elements
@@ -85,6 +88,7 @@ ALGO PresortElementUniqueness(A[0..n-1])
   for i <- 0 to n-2 do
     if A[i] = A[i+1] return false
   return true
+```
 
 - what is the efficeny?
 - sort? + scanning array?
@@ -146,6 +150,7 @@ nlogn
 - all equal values will be adjacent to each other
 - find the longest run of adjacent equal values in the sorted array because after sorting its all together
 
+```
 ALGO PresortMode(A[0..n-1])
   // computes the mode of an array by sorting it first
   // Input: An array A[0..n-1] of orderable elements
@@ -162,16 +167,16 @@ ALGO PresortMode(A[0..n-1])
       modevalue <- runvalue
     i <- i + runlength
   return modevalue
-
+```
 
 ### Is Pre-sorting Always better?
 Problem: search for a given K in A[0..n-1]
 
 Presorting-based algorithm
-- stage 1: sort the array by an efficent sorting algorithm (nlogn)
+- stage 1: `sort` the array by an efficent sorting algorithm `(nlogn)`
 - stage 2: Apply binary search
 
-Efficeny: O(nlogn) + O(logn) = O(nlogn)
+Efficeny: O(nlogn) + O(logn) = `O(nlogn)`
 Good or bad? (sequencial search is O(n))
 Why do we have our dictionaries, telephone dictionaries, etc sorted
 

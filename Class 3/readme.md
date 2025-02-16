@@ -168,7 +168,7 @@ BC and CB
 - insert the remaining object A into all possible positions in each of the permutations of B and C:
 ABC BAC BCA and ACB CAB CBA
 
-### Example find all permutations
+### Example find all permutations pg 19
 ABC     ACB CAB CBA ABC BAC BCA
 BC      CB BC
 B       B
@@ -266,7 +266,7 @@ binarySearch(a[],k,start,end)
             end ← mid – 1
     return -1
 
-## Recursive solution
+## Recursive solution pg 32
 binarySearch(a[],k,start,end)
     if end < start
         return not found
@@ -276,7 +276,7 @@ binarySearch(a[],k,start,end)
     if k > a[middle]
         return binarySearch(a[], k, middle+1, end)
     else if k < a[middle]
-        return binarySearch(a[],k,start,end)
+        return binarySearch(a[],k,start,end-1)
 
 ## Binary search effiiency
 - each step you decrease by half
@@ -322,21 +322,22 @@ Worst case: 3 weight comparisons are needed
 best case: 1 weight comparisons are needed
 > log2n
 
-`Q5` Write the psudocode for your solution to this problem
-fakeCoint(n coins):
+`Q5` Write the psudocode for your solution to this problem pg 43
+```
+fakeCoin(n coins):
     if n=1 the coin is fake
     else
         if n is odd
             remove first coin c0 and set aside
         else
-            divide remaining coins into two piles c1 and c2 each with [n/2] coins
+            divide remaining coins into two piles c1 and c2 each with floor(n/2) coins
         weigh the two piles
         if they weigh the same
             c0 is the fake
         else
             discard the heavier pile and set n=[n/2]
         fakeCoin(remaining pile)
-
+```
 
 ## Fake coin problem
 - this solution is O(log2n)
