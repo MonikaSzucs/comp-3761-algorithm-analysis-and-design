@@ -1,5 +1,40 @@
-# Class 6
+# Quiz 2 
+1. All sorting algorithms are Brute Force algorithms
+- false
 
+2. All brute force algorithms are O(n^2)
+- false
+
+3. Determind the number of character comparisons made when searching for pattern P in text T using brute Force technique
+T=NO_NO_NO_NO
+P=DOT
+answer: 9
+
+4. Determind the number of character comparisons made when searching for pattern P in text T using brute Force technique
+T=NOONOONOONOO
+P=BOO
+Answer: 10 
+
+5. Insertion sort moves an element into the correct position by continually swapping it with adjacent elements, until no further swaps are possible
+- false - this is not insertion sort what its describing is bubble sort
+
+6. Insertion Sort is a decrease-by-one algorithm
+- true
+
+7. insertion sort is a decrease by a constant factor (half algorithm)
+- false - it should be decrease by 1
+
+8. What is the worst case efficency class of bubble sort?
+O(n^2)
+
+9. What is the worst case effiency class of brute force string matching algorithm?
+none of the above it should be O(nm) - lengthof text and character need to check all characters
+
+10. What is the worst cse efficency of selection sort
+- none of above it should be O(n^2)
+
+
+# Class 6
 ## Reminder
 - Design means pseudocode and implement means java code?
 
@@ -8,18 +43,20 @@
 
 
 ## Space-time tradeoff
-- `space` refers to the memory consumed by an algorithm to complete its execution.
+- `space` refers to the memory consumed by an algorithm to complete its execution. If there is not enough space then it cannot run
 - `Time` refers to the required time for an algorithm to complete the execution.
 - Best algorithm to solve a problem is one that 
 • Requires less memory and
 • Takes less time to complete
 
+Ex cellphone the main concern is power consumption - people need the electronic to last long
+
 > In practice it is not always possible 
 
 - We have to sacrefice one at the cost of the other
-- if space is our constraint, then we have to choose an algorithm that requires less space at the cost of more execution time. (example: Bubble sort)
+- if space is our constraint, then we have to choose an algorithm that requires less space at the cost of more execution time. (example: Bubble sort) - bubble sort uses less extra space - two araible for looping i and j and one doing the swap
 
-- if time is our constraint then we have to choose an algorithm that takes less time to complete its execution at the cost of more space. (example: Mergesort)
+- if time is our constraint then we have to choose an algorithm that takes less time to complete its execution at the cost of more space. (example: Mergesort) - different way to implement - people allocate extra space for memory to do temp sorting
 
 ## Space-for-time tradeoffs varieties
 1. input enhancement: preprocessess the input to store some info to be used later in solving the problem
@@ -28,7 +65,7 @@
 - string matching
 
 2. Pre-structuring: using extra space to facilitate faster access to the data
-- hasing
+- hashing
 - hash function
 - collision handling
 - efficency of hashing
@@ -45,20 +82,22 @@
 6 43 121 136 213 6111 7185 8290 9106 9978 output
 ```
 
+- this looks similar to lab 1
+
 ```
 Algorithm ComparisionCountingSort A([0..n-1])
-    for i  0 to n-2
-        for j  i+1 to n-1
+    for i <- 0 to n-2
+        for j <- i+1 to n-1
             if input[i] < input[j]
                 Count[j]++
             else
                 Count[i]++
-for i  0 to n-1
-    output[Count[i]]  input[i]
+for i <- 0 to n-1
+    output[Count[i]] <- input[i]
 ```
 
 - Efficiency:
--- it is O(n2)
+-- it is O(n^2)
 --- But of  course we have other sorts (mergesort, heapsort) that are O(nlogn)
 
 ## Distribution Counting Sort
@@ -67,6 +106,8 @@ Sort a known range of  numbers
 - People by birth date or age
 - Seinfeld episodes from best to worst... 
 -- trick scenaio, they are all amazing
+
+- we are looking at the specific signture of the array. Specific requirement for array. It has specific requirements for its input
 
 ### Distribution Counting Sort Concept
 1. Sum the occurrence of each number (There are three 1’s, five 2’s, etc)
@@ -82,13 +123,13 @@ pg 28
 
 ```
 Algo DistributionCountingSort (A[0.. n-1])
-    for j <- 0 to u-l do
-        C[j] <- 0
-    for i <- 0 to n-1 do
+    for j <- 0 to u-l do                // or can be j <- l-l
+        C[j] <- 0                       // C is a new helper array with all 0's to help
+    for i <- 0 to n-1 do                // sum the freq of each number
         C[A[ i]-l] <- C[A[ i]-l] + 1
     for j <- 1 to u-l do
-        C[j] <- C[j-1] + C[j]
-    for i n-1 downto 0 do 
+        C[j] <- C[j-1] + C[j]           // we cumulative count/ accurances
+    for i <- n-1 downto 0 do 
         j <- A[ i]- l
         S[C[ j] -1] <- A[ i]
         C[ j] <- C[ j] –1
@@ -105,6 +146,9 @@ n = length of ‘A’
 
 - there are 4 general steps/4 for loops
 
+low - high = 4 - 1 = 3 spots in C array
+- this is good when you have a small value size
+
 ### Distribution Counting Sort- example
 A:
 
@@ -114,7 +158,7 @@ l = lowest number in ‘A’
 u :4
 l: 1
 
-‘C’ length: u  - l+1 = k = 4
+‘C’ length: u  - l + 1 = k = 4
 
 ### Loop 1: initialization
 A: 4,1,3,4,3
@@ -344,11 +388,12 @@ TEAM // last letter is M so it will be given a position of 3
 A   E   M   T   *
 1   2   4   3   4
 
+* this is a wild card anything else that didn't show up in the pattern so that section is skippable 1:42:00
 
 total (t) = 4
 A = 4-2-1 = 1
 E = 4-1-1 = 2
-M = 4-3-1 = 4 // is the last character in the pattern
+M = 4 // is the last character in the pattern
 T = 4-0-1 = 3
 
 ### Using the shift table ...
@@ -378,7 +423,7 @@ eg:
 Let’s consider traditional data structures ...
 
 `Array`: How would you use an array (or arrays) to store this
-- use either 2 1D arrays or 1 2D array or an array of  objects
+- use either 2 1D arrays or 1 2D array or an array of  objects - this aren't the most efficient though
 -- store key in a sorted array (for fast retrieve)
 -- use the second array (or column) to store the record or a pointer to the record ... or ...
 - alternatively, create an object ‘Employee’, and store in an array of objects
@@ -455,7 +500,7 @@ Insert into hash table (Emily, 6046321)
 Example
     assume m=5
     Insert into hash table (Emily, 6046321)
-        ord(e) +ord(m) + ord(i) + ord(l)+ ord(y)=
+        ord(e) +ord(m) + ord(i) + ord(l)+ ord(y)=  // we convert to ordinal for numerical value e is 5th letter in alphabet etc..
         5+ 13+ 9 + 12+ 25 = 64
 
 64 -> key mode 5 -> 4
@@ -467,7 +512,7 @@ Example
 ```
 h <- 0                      // input is a string S of length s
 for i <- 0 to s-1 do        // ci is the char in ith posn i of S
-h <- h + ord(ci)            // ord(ci) is the relative posn ...
+    h <- h + ord(ci)        // ord(ci) is the relative posn ...
                             // ... of ci in the alphabet
 hashcode <- h mod numBuckets // map sum of posns into range
 ```
@@ -481,6 +526,8 @@ hashcode <- h mod numBuckets // map sum of posns into range
 index  = 30 mod 25 = 5 
 2. Insert into hash table (105, Anthony )
 index = 105 mod 25 = 5
+
+- if we have same index then that is a collision we can handle it in different was as explained below
 
 ## Collisions Handling
 
@@ -503,6 +550,9 @@ index = 105 mod 25 = 5
 4
 pos 5 -> 30 Jimmy -> 105 Anthony
 
+- instead of holding the array in each bucket it will store a pointer or reference, it will create a pointer/linked list
+- how do we know its 30 or 105 in order to get the value our linked list should store than just the index value it should store the key
+
 #### Separate Chaining Exercise 1
 - Use the hash function h(i) = i mod 7
 - Draw the Separate chaining hash table resulting from inserting following keys and values:
@@ -521,11 +571,13 @@ pos 5 -> 30 Jimmy -> 105 Anthony
 5 -> 12 name2 -> 5 name5
 6
 
+- you add the new item at the end of the linked list
+
 ### Closed Hashing
 It works like this:
 - compute the hash
 - if  the bucket is empty, store the value in it
-- if  there is a collision, linearly scan for next free bucket and put the key there
+- if  there is a collision, linearly scan for next `free bucket and put the key there`
 -- note: treat the table as a circular array
 > Note: important - with this technique the size of  the table must be at least n (or there would not be enough room!)
 
@@ -548,7 +600,7 @@ index = 105 mod 25 = 5
 ### Efficiency of  Hashing
 What is the efficiency of  the hashtable structure?
 - add(key, value)      ... is  𝑶(𝟏)  
-- value   get(key)    ... is  𝑶(𝟏)
+- value  <- get(key)    ... is  𝑶(𝟏)
 - delete(key)          ... is 𝑶(𝟏)
 - of  course there could always be a degenerate case, where every insert causes a collision ... in this case we would end up with O(n)
 
