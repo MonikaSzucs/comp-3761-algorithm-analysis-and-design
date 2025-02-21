@@ -140,9 +140,9 @@ Algo: fib( n )
 Now look at a different algorithm
 ```
 Algo: fib2( n )
-    F[0] ¬0; F[1] ¬1;
-    for i ¬2 to n do
-        F[i] ¬F[i-1] + F[i-2]
+    F[0] <-0; F[1] <-1;
+    for i <-2 to n do
+        F[i] <- F[i-1] + F[i-2]
     return F[n]
 ```
 
@@ -169,7 +169,7 @@ algorithm efficiency
 - want to `estimate` efficency `before` writing code
 
 1. running time of an algorithm depends on the input size - size of `n` in f(n)
-2. The efficiency for any algorithm depends on number of instructiosn executed - ex nested for loops vs single operations
+2. The efficiency for any algorithm depends on number of instruction executed - ex nested for loops vs single operations
 
 - We define the basic operation of  an algorithm as the statement that gets executed most frequently.  Typically excluding the iterator (‘i’) assignments/comparisons.
 
@@ -178,7 +178,7 @@ algorithm efficiency
 count the number of  basic operation executed for an input of  size n
 
 - Using this idea, we would say for find 
-- f(n) =n-1
+- f(n) = n-1
 - Because we don’t count instructions that are not basic operations
 
 ## The fundamental concept we use to analyze algorithmic efficiency
@@ -243,7 +243,7 @@ C(n) - maximum over inputs of size n
 - best case
 C(n) - minimum over inputs of size n
 
-## Example 7pg 37 Searching for Key
+## Example 7 pg 37 Searching for Key
 Problem: Searching for key in a list of  n items
 Input size measure:
 - Number of list’s items,  i.e. n

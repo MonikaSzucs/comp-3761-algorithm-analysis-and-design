@@ -232,6 +232,7 @@ if n>0
         insert a(n) to the s
 
 - populate two sets - shows decrease and conquer for the last two lines
+- The big O is O(2^n)
 
 
 # Decrease by half

@@ -93,13 +93,13 @@ The operation is assign value
 ## Notes
 
 | Class |     Name    | Comments |
-| :---  |     :---:   |    ---: |
+| :---  |     :---:   |    :--- |
 |   1   | constant    |  Short of best-case efficiencies, very few reasonable examples can be given since an algorithm's running time typtically goes to infinity when its input size grows infinitely large. |
-| logn  | logarithmic | Typically, a result of cutting a problem's size by a constant factor on each iteration of the algorithm (see Section 5.5). Note that a logarithmic algoithm cannot atke into account all its input (or even a fixed fraction of it): any algorithm that does so will ahve at least linear running time.  |
-| n  | linear | Algorithms that scan a list of size n (ex sqeuencial search) belong to this class  |
+| logn  | logarithmic | Typically, a result of cutting a problem's size by a constant factor on each iteration of the algorithm (see Section 5.5). Note that a logarithmic algoithm cannot take into account all its input (or even a fixed fraction of it): any algorithm that does so will have at least linear running time.  |
+| n  | linear | Algorithms that scan a list of size n (ex sequencial search) belong to this class  |
 | nlogn  | n-log-n | Many divide and conquer algorithms include merge sort and quicksort in the average case, fall into this category  |
-| n^2  | quadratic | Typically, characterizes efficency of algorithms iwth two embedded loops (see the next section). Elementary sorting algorithms and certain operations on n-by-n matrices are standard example  |
-| n^3  | cubic | Typically, characterizes efficency of algorithms with three mbedded loops (see the next section). Several non tricial algorithms from linear algebra fall into this class |
+| n^2  | quadratic | Typically, characterizes efficency of algorithms with two embedded loops (see the next section). Elementary sorting algorithms and certain operations on n-by-n matrices are standard example  |
+| n^3  | cubic | Typically, characterizes efficency of algorithms with three embedded loops (see the next section). Several non tricial algorithms from linear algebra fall into this class |
 | 2^n  | exponential | Typtical for algorithms that generate all subsets of an n-element set. Often the term exponential is used in a broader sense to include this and larger orders of growth as well |
 | n!  | factorial | Typtical for algorithms that generate all permutations of an n-element set |
 
@@ -107,7 +107,7 @@ The operation is assign value
 1. Decide on a parameter indicating the inputs size.
 2. Identify the algorithms basic operation.
 3. Check whether the number of times the basic operation is executed depends only on the size of the input.
-•if it depends on some other property, the best/worst/average case efficiencies must be investigated separately
+- if it depends on some other property, the best/worst/average case efficiencies must be investigated separately
 4. Set up a sum expressing the number of times the basic operation is executed.
 5. Use standard formulas and rules of sum manipulation to find a closed form formula c(n) for the sum from step 4 above.
 6. Determine the efficiency class of the algorithm using asymptotic notations 
@@ -140,7 +140,6 @@ ALGO MatrixMultiplication(A[0..n-1, 0..n-1], B[0..n-1, 0..n-1])
                   C[i,j] <- 0.0
                   for k <- 0 to n-1 do
                         C[i,j] <- C[i,j] + A[i,k] * B[k,j]
-
       return C
 ```
 C(n) = top(n-1) sigma bottom(i=0) top(n-1) sigma bottom(j=0) top(n-1) sigma bottom(k=0) 1 = n^3 which is O(n^3)
@@ -268,6 +267,8 @@ ALGO BruteForceStringMatching(T[0..n-1],P[0..m-1])
       return -1
 ```
 
+O(mn)
+
 ### Worst-case Analysis
 - There are m comparisons for each shift in the worst case (inner loop)
 - There are n-m+1 shifts (outer loop)
@@ -380,8 +381,6 @@ Whats better than log(n) is 1
 
 
 
-
-
 # Chapter 3
 `brute force` 
 - the most `straight forward` approach for solving a problem
@@ -423,6 +422,9 @@ Line 6      return min
 
 pay attention what is given to you 
 findMin(A[1..n]) // this means it starts at 1  `IMPORTANT FOR EXAMS`
+
+basic operation : if A[i] < min is comparison
+O(n)
 
 ## Question find the index
 Algo: findMinIndex (A [1..n])
@@ -489,12 +491,14 @@ problem
 ##
 The outer loop shows you the  n-m+1 is the max alignment
 
+```
 for i<-0 to n-m do
       j<-0
       while j < m and P[j] = T[i+j] do
             j<-j+1
       if j=m return i
 return -1
+```
 
 max alignment is. for each alignment how much will you end up with?
 (n-m+1) * m
