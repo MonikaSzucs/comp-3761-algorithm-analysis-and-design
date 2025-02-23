@@ -682,3 +682,9 @@ public int hashCode() {
 • add  = 50
 • dad  = 59
 
+## Sets
+- an arry but can't have duplicates
+
+## Map
+- stores a key and a value
+
