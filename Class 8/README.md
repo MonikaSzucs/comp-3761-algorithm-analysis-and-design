@@ -423,7 +423,7 @@ Notes:
 
 pg 40
 Start with vertex and do the DFS order - start at data
-> DFS vistied list: dcgbacfh
+> DFS vistied list: dcgbaefh
 
 page 41
 > DFS: a b f e g c d h
@@ -442,6 +442,7 @@ the basic operation is:
         if w has not been visited
             dfs(w)
 ```
+- this is the best efficency we can achieve
 - we can see that this operation will be performed once for each vertex that occurs in the underlying graph structure
 -- therefore the #basic ops depends on the size of the structure used to implement the graph
 - basically we need to visit each element of the data structure exactly once. so the efficiency must be:
@@ -460,6 +461,7 @@ Informally:
 - when all vertices have been visited, visit all vertices 2 hops away
 - continue in this way until all have been visited 
 
+### BFS Algorithm
 - the statement "visit node v|w" can be replaced by whatever you are doing
 - use a queue (FIFO) to determine which vertex to visit next
 - edges that are in G, but not in the resulting BFS tree are called cross-edges
@@ -518,14 +520,14 @@ Example pg 50 & 51 & 52
 
 ## Problem 3: Shortest Path
 - Use BFS to find the shortest path between two connected vertices, u and w
--- use BFS because it will find a shortest path (DFS will find “a path” – not always the shortest one)
+-- use BFS because it will find a shortest path (DFS will find “a path” - not always the shortest one)
 
 `Step 1`: run bfs(u) to create a spanning tree T rooted at u (all paths from in T, starting at root, are shortest)
 
 `Step 2`: extract the path from T
 use DFS on T, to find any path (as in the previous problem), 
 
-## Problem 4: Find Cucles
+## Problem 4: Find Cycles
 - Explain how you can use BFS or DFS to determine if a graph is acyclic
 -- either will work
 -- need to quit when we have a cycle (we attempt to visit a neighbor, but it has already been visited)
