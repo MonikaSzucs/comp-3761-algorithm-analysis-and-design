@@ -27,7 +27,7 @@ public class FileReader {
         try (Scanner scanner = new Scanner(new File(filePath))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                System.out.println(line);
+                // System.out.println(line);
                 String[] lineWords = line.split(" ");
                 for(int i =0;i<lineWords.length;i++){
                     if (lineWords[i].trim().length() > 0) {
@@ -39,7 +39,6 @@ public class FileReader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        //System.out.println(words);
         return words;
     } 
     public static ArrayList<String>[] readKeywordsAndExcuses(String filePath){
@@ -57,11 +56,9 @@ public class FileReader {
                 }
                 else if(lineNumber >= 2 && lineNumber <= K+1) {
                     sortedInsert(words,line.toLowerCase());
-                    // words.add(line);
                 }
                 else if(lineNumber >= K+2 && lineNumber <= K+1+E){
                     sortedInsert(excuses,line.toLowerCase());
-                    // excuses.add(line);
                 }
                 lineNumber++;
             }

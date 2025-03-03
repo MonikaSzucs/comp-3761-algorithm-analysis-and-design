@@ -255,6 +255,7 @@ This is a graph btu not a tree. Why?
 - pg 24
 
 - when they have two points - no two notes pointing to each other we are talking about a tree here
+- one node points to the left child and one node to the right child
 
 ## Tree Node Implementation
 ```
@@ -277,9 +278,55 @@ V is a set of vertices
 E is a set of edges
 ```
 
+pg 27
+
+- `directed` - arrows
+A -> B  - has one edge
+A <=> B - has two edges
+Directed = inD + outD
+
+- `undirected` - no arrows
+undirected = inD = outD
+
+degree of vertex 5? 3
+degree of vertex b? 3
+What is the indegree of vertex b? 2
+What is the outdegree of vertex b? 1
+What is indegree of vertex 5? 3 - fro undirected graph when edges dont ahve direction you can see it is `bidirectional`
+What is the outdegree of vertex 5? 3
+
+- when its in degree we add the row
+- when its out degree we add the column
+
+### Example for lab
+    //     0 
+    //    / \
+    //    1  2 
+    //         \
+    //          3
+    //  Directed Matrix:
+    //     0 1 2 3     
+    //  0[ 0 1 1 0 ]
+    //  1[ 0 0 0 0 ]
+    //  2[ 0 0 0 1 ]
+    //  3[ 0 0 0 0 ]
+    // when its in degree we add the row
+    // when its out degree we add the column
+    // Ajdacency Matrix:
+    //     0 1 2 3     
+    //  0[ 0 1 1 0 ]
+    //  1[ 1 0 0 0 ]
+    //  2[ 1 0 0 1 ]
+    //  3[ 0 0 1 0 ]
+    // ----------
+
 ## Degree
-In-degree(v) – Number of edges facing towards node ‘v’
-Out-degree(v) – Number of edges facing outwards from ‘v’
+In-degree(v) 
+- Number of edges facing towards node 'v' 
+- how many edges go into the vertex
+
+Out-degree(v) 
+- Number of edges facing outwards from 'v'
 
 ## Representing Graphs
 Adjacency matrix pg 30
@@ -292,9 +339,17 @@ Adjacency lists pg 31
 2. Adjacency lists
 - A list of vertices connected to each vertex
 
-3. Which one to use?
+from (vertical) vs to (horizontal)
+
+Which one to use?
 - Depends on the nature of the graph (sparse or not)
 - Depends on the algorithm
+
+weighted graph we will talk about later we can use adjacency matrix or adjcency weighted maxtrix so each edge will have a specific weight to it.
+
+### Representation: adjacency List 
+pg 31
+
 
 ## Properties
 Connected graph
@@ -327,10 +382,10 @@ Two approaches:
 - Depth-First Search (DFS)
 - Breadth-First Search (BFS)
 
-## Depth First Search
+## Depth First Search (DFS)
 - Visits all vertices by always moving away from the last vertex visited (if possible)
 -- Backtracks if there are no more adjacent vertices
-- Implementation often uses a stack of vertices being processed
+- Implementation often uses a `stack` of vertices being processed
 - “Re-draws” graph in a tree-like fashion
 - the statement "visit node v" should be replaced by whatever you are doing  
 - the output is typically a “DFS Tree”, which is a tree containing all the edges that are used to visit node
@@ -351,11 +406,24 @@ dfs(v)
             dfs(w)
 ```
 
+Why do we need DFS? Why do we need a loop?
+- to initialize visited array
+- The loop in the DFS part to check the nodes that havn't been visited
+- a graph can have more than one components (unconnect graph)
+- a graph can be unconnected with multiple separate parts.
+- so if it is all connected so as long as we get into DFS then it is connected
+
+## DFS Example (using the algorithm)
+
 Notes: 
 - To trace the operation algorithm we use a stack. 
 - When we make a recursive call (eg (dfs(v)), we push v onto the stack). 
 - When v becomes a dead-end (ie: no more adjacent unvisited neighbors) it is popped off the stack. 
 - Typically we break ties for next unvisited neighbor by using alphabetical order.
+
+pg 40
+Start with vertex and do the DFS order - start at data
+> DFS vistied list: dcgbacfh
 
 page 41
 > DFS: a b f e g c d h
