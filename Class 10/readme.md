@@ -11,17 +11,22 @@
 ### Greedy Technique
 - An `optimization problem` is one in which you want to find, not just a
 solution, but the best solution
-- A “greedy algorithm” sometimes works well for optimization problems
+-- Weighted graph: weight (means? The time or cost for travelling) (on each edge)
+- A “greedy algorithm” sometimes works well for `optimization problems`
+
 - Constructs a solution to an optimization problem through a sequence of
 choices
 -- Choose the best choice that you can make right now, without regard for future
 consequences, the “best” choice is the choice that gets us closest to an optimal solution
--- You hope that by choosing a local optimum at each step, you will end up at a global optimum
-- Greedy choice properties:
--- `Feasible`: it has to satisfy the problem’s constraint
--- `locally optimal`: it has to be the best local choice among all feasible choices available on that step.
--- `Irrevocable`: Once made, it cannot be changed on subsequent steps of the algorithm.
-- It’s a kin to Life – we can revisit choices, but never go back in time to reverse them. We must make the best decision with the information we have.
+-- You hope that by choosing a local optimum at each step, you will end up at a `global optimum`
+
+Greedy choice properties:
+- `Feasible`: it has to satisfy the problem’s constraint
+- `locally optimal`: it has to be the best local choice among all feasible choices available on that step.
+- `Irrevocable`: Once made, it cannot be changed on subsequent steps of the algorithm.
+
+`It’s a kin to Life` – we can revisit choices, but never go back in time to reverse them. We must make the best decision with the information we have.
+
 
 ### Simple Example
 - Problem: Pick k numbers out of n numbers such that the sum of these k numbers is the largest.
@@ -44,6 +49,15 @@ ENDFOR
 - the total cost associated with tree edges is the minimum among all possible spanning trees
 - not necessarily unique
 
+```
+O -1- O
+|     |
+2     2
+|     |
+O -1- O
+```
+1 + 2 + 1 = 4
+
 ### MST's
 - Consider all the spanning trees of G
 - The weight of each spanning tree is given by the sum of its edges ...
@@ -55,7 +69,7 @@ ENDFOR
      4\   /2
         d
 ```
-- Minimum Spanning Tree of G is this graph, and it has a weight of 4.
+- `Minimum Spanning` Tree of G is this graph, and it has a weight of 4.
 
 ```
         b
@@ -65,6 +79,7 @@ ENDFOR
         d
 ```
 1 + 1 + 2 = 4
+- spanning tree have no cycles
 
 ### Prim
 Basic principle:
@@ -72,7 +87,18 @@ Basic principle:
 - Add a root node as a start
 - Until all vertices are visited, add a vertex to the list by finding the smallest edge from a vertex in the spanning tree.
 
+`Where to start?`
+- if the question does not say where to start then always start alphabetically. 
+
+Steps:
+1. finding out all the candidates (edges those connecting already visited vertiex to another vertex not visited) for the step
+2. among the candidates pick the one with the lowest weight
+
 example pg 14 - 19
+
+candidate edges with two letters
+{ {a,b}, {b,c}, {c,i}, {c,f}, {f,g}, {g,h}, {c,d}, {d,e} }
+Vertex: {a,b,c,i,f,g,h,d,e}
 
 ```
 Prim(G)
@@ -93,10 +119,16 @@ pg 21 - 28
 Vt = {a, f, e, b, c, d}
 Et = { {a,f}, {f,e}, {e,b}, {b,c}, {c,d} }
 
+total weight = 4+3+8+6+4 = 25
+
 ### Kruskals
 also greedy
 - repeatedly adds the minimum weight edge that does not induce a cycle
 - example: pg 30
+
+Edges:
+{ {a,c}, {e,h}, {a,f}, {b,f}, {g,l}, {f,d}, {f,j}, {g,m}, {c,e}, {h,i}, {j,k} }
+- not all verticies need to be visited at once. We look at the weighted line and we start at the lowest number and work our way up
 
 ```
 Kruskal(G) // from textbook
@@ -114,9 +146,9 @@ Kruskal(G) // from textbook
 
 implementation notes:
 - you need to be able to efficiently sort the edges
--- maybe use a regular PQ ?
+-- maybe use a regular PQ (priority queue)?
 - need to be able to determine if adding an edge will create a cycle
--- maybe use a dfs or bfs cycle checker?
+-- maybe use a dfs or bfs cycle checker? better way to do ths is keep multiple sets
 --- too slow ...
 - we notice that the challenge in Kruskal’s algo is that we have to constantly check for cycles when we add edges
 - if we use DFS, we would have worst case:
@@ -125,7 +157,7 @@ O(|V|2)x(V-1) = O(|V|3)
 - this is not great for efficiency, which is why Kruskals is typically implemented using structures that support efficient union operations on sets
 
 ### Disjoint Subsets and Union-find operations
-- `disjoint subsets` means that elements are only in one subset at a time
+`disjoint subsets` means that elements are only in one subset at a time
 - the following set operations are supported: 
 `makeset(x)`
 - creates a new one element set containing {x}
@@ -198,6 +230,7 @@ pg 38 to 44
 - With an efficient union-find algorithm… the slowest thing is the initial sort on edge weights
 O(|E| log |E|)
 
+
 ## Shortest Path Problems
 Problem: Single-Source Shortest Path
 - find the shortest path from one source vertex v to every other vertex in the graph
@@ -209,7 +242,7 @@ What about BFS? pg 49
 - the algorithm to find shortest paths in weighted graphs needs to consider the weight on the edge before including it in the solution
 - Popular Approach: Dijkstra
 
-Relaxation
+### Relaxation
 - Dijkstra always refers to “relaxing” a vertex
 - this means update the best known shortest path to v
 
@@ -220,6 +253,24 @@ Relaxation
 
 Q = PQ
 S = Solution - Vertices that have found the shortest path to the root.
+
+Ex page 52
+Q   A   B   C   D   E
+    0   ∞   ∞   ∞   ∞
+        10  3   ∞   ∞
+        7       11  5
+        7       11
+                9
+
+Parent  [-,C,A,B,C]
+        [0,7,3,9,5]
+
+A->A (0)
+A->B: A->C->B (7)
+A->C: A->C (3)
+A->D: A->C->B->D (9)
+A->E: A->C->E (5)
+
 
 Greedy Algorithm
 - builds a tree of shortest paths rooted at the starting vertex
@@ -261,3 +312,25 @@ Here is the high-level pseudocode:
 - For example, consider graph A below.
 -- Graph B is the result of running Dijkstra's algorithm on A.
 -- But clearly there exists a path such as a-c-e in graph C that is shorter than the path found in B. Therefore Dijkstra's algorithm did not work on this graph that has a neg edge weight.
+
+## Homework
+- use Dijkstra on the graph below start from node B
+
+The graph can be represented as an adjacency list:
+
+```
+B: (A, 3), (C, 4)
+A: (D, 7)
+D: (B, 2), (C, 5)
+C: (E, 6)
+E: (D, 4)
+```
+
+```
+Node	Shortest Distance from B	Path
+A	    3	                        B → A
+B	    0	                        B
+C	    4	                        B → C
+D	    10	                        B → A → D
+E	    10	                        B → C → E
+```
