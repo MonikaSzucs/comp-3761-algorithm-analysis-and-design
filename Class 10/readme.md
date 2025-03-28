@@ -168,7 +168,7 @@ O(|V|2)x(V-1) = O(|V|3)
 and Sy are removed from the collection, and Sxy is added
 
 
-### Disjoint Subsets and Union-find Example
+### Disjoint Subsets and Union-find Example pg 35
 ```
 let S be the set {1, 2, 3, 4, 5, 6, 7, 8}
 for each element x in S
